@@ -227,3 +227,7 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+
+def get_context(context):
+    import frappe
+    context.theme = frappe.cache().get_value("theme") or "light"
