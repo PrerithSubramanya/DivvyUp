@@ -1,0 +1,88 @@
+{% extends "templates/pages/base.html" %}
+
+{% block title %}Login - Divvy-Up App{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-base-200 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-md">
+        <h2 class="text-center text-3xl font-bold text-base-content mb-2">
+            Divvy-Up!
+        </h2>
+        <p class="text-center text-sm text-base-content/70 mb-8">
+            Stay updated on your shared expenses
+        </p>
+    </div>
+
+    <div class="sm:mx-auto sm:w-full sm:max-w-md">
+        <div class="bg-base-100 py-8 px-4 shadow sm:rounded-lg sm:px-10">
+            <form hx-post="/api/v2/method/divvy_up.api.login.handle_login" 
+                  hx-trigger="submit"
+                  hx-target="#login-result"
+                  hx-swap="innerHTML">
+                <div class="space-y-6">
+                    <div>
+                        <label for="email" class="label">
+                            <span class="label-text">Email</span>
+                        </label>
+                        <input id="email" name="usr" type="text" required
+                               class="input input-bordered w-full">
+                    </div>
+
+                    <div>
+                        <label for="password" class="label">
+                            <span class="label-text">Password</span>
+                        </label>
+                        <div class="relative">
+                            <input id="password" name="pwd" type="password" required
+                                   class="input input-bordered w-full pr-16">
+                            <button type="button"
+                                    onclick="togglePassword()"
+                                    class="btn btn-ghost btn-xs absolute top-1/2 right-2 transform -translate-y-1/2">
+                                Show
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="text-sm">
+                        <a href="#" class="link link-primary">
+                            Forgot password?
+                        </a>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn btn-primary w-full">
+                            Sign in
+                        </button>
+                    </div>
+                    
+                    <div id="login-result"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <p class="mt-8 text-center text-sm text-base-content/70">
+        New to Divvy-Up?
+        <a href="/signup" class="link link-primary">
+            Join now
+        </a>
+    </p>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function togglePassword() {
+        const passwordInput = document.getElementById('password');
+        const toggleButton = passwordInput.nextElementSibling;
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            toggleButton.textContent = 'Hide';
+        } else {
+            passwordInput.type = 'password';
+            toggleButton.textContent = 'Show';
+        }
+    }
+</script>
+{% endblock %}

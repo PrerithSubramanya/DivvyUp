@@ -1,0 +1,16 @@
+{% extends "templates/pages/base.html" %}
+
+{% block title %}Dashboard - Divvy-Up App{% endblock %}
+
+{% block content %}
+
+{%if frappe.session.user == "Guest"%}
+   <script>window.location.href = "/login";</script>
+{% else %}
+<div id="main-div" class="min-h-screen bg-base-200 p-8">
+    <h1 class="text-3xl font-bold mb-6">Welcome to Your Dashboard, {{ frappe.session.user }} </h1>
+    <p class="mb-4">You've successfully logged in. Here's where you'll see your expenses and groups.</p>
+    <!-- Add more dashboard content here -->
+</div>
+{% endif %}
+{% endblock %}

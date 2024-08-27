@@ -1,0 +1,91 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-08-21 18:15:42.286162",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "expenditure_name",
+  "group",
+  "type",
+  "amount",
+  "paid_by",
+  "split_type",
+  "splits"
+ ],
+ "fields": [
+  {
+   "fieldname": "expenditure_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Expenditure Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "group",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Group",
+   "options": "ExpenseGroup",
+   "reqd": 1
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Food\nTravel\nAccommodation\nOther",
+   "sort_options": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount",
+   "reqd": 1
+  },
+  {
+   "fieldname": "paid_by",
+   "fieldtype": "Link",
+   "label": "Paid By",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "split_type",
+   "fieldtype": "Select",
+   "label": "Split Type",
+   "options": "Equal\nExact\nPercentage\nShares",
+   "reqd": 1,
+   "sort_options": 1
+  },
+  {
+   "fieldname": "splits",
+   "fieldtype": "Table",
+   "label": "Splits",
+   "options": "Expenditure Split"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-08-21 18:28:45.788329",
+ "modified_by": "Administrator",
+ "module": "Divvy Up",
+ "name": "Expenditure",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
